@@ -1,68 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Psychic Guessing Game</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link href="https://fonts.googleapis.com/css?family=Acme|Questrial|Sacramento&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
+
 </head>
+
 <body>
-    <h1>The Psychic Game</h1>
-    <br><br>
     <div class="container">
-        <p>Guess what number I am thinking of!</p>
-        <div class="counters">
-            <div id="win-counter"></div>
-            <div id="losses-counter"></div>
-            <div id="guesses-remaining"></div>
-            <div id="user-guesses"></div>
+        <div id="game-title">
+            <h1>The Psychic Game</h1>
+        </div>
+        <div id = "prompt">
+            <p>🔮Can you guess what letter of the alphabet I am thinking of?🔮</p>
+            <p>Press any key to find out!</p>
+            <div class="counters">
+                <div id="win-counter"></div>
+                <div id="losses-counter"></div>
+                <div id="guesses-remaining"></div>
+                <div id="user-guesses"></div>
+            </div>
         </div>
     </div>
 </body>
-<script>
-    var userGuesses = [];
-    var guessesRemaining = 10;
-    var wins = 0;
-    var losses = 0;
-    var userWon = function () {
-        guessesRemaining = 10;
-        userGuesses = [];
-        alert("You won!");
-    }
-    var userLost = function () {
-        guessesRemaining = 10;
-        userGuesses = [];
-        alert("You lose!");
-    }
-    
-
-    var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-    var computerChoice = alphabet[Math.floor(Math.random()*alphabet.length)];
-    console.log("I am thinking of " + computerChoice)
-
-    document.onkeyup = function (event){
-       guess = event.key.toLowerCase();
-       userGuesses.push(guess);
-       if (guess === computerChoice) {
-           wins++;
-           userWon();
-       } else {guessesRemaining--;
-       } 
-       if (guessesRemaining === 0) {
-           losses++;
-           userLost();
-       }
-
-       document.getElementById("win-counter").innerHTML = "You have won " + wins + " times";
-       document.getElementById("losses-counter").innerHTML = "You have lost " + losses + " times";
-       document.getElementById("guesses-remaining").innerHTML = "You have " + guessesRemaining + " guesses remaining";
-       document.getElementById("user-guesses").innerHTML = "You have guessed " + userGuesses.join(" ");
-
-    };
-
-    
-    
-    
-
+<script type="text/javascript" src="./assets/javascript/game.js">
 </script>
+
 </html>
